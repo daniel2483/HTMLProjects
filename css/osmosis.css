@@ -1,0 +1,72 @@
+/* css/forma_osmosis.css */
+
+
+/* Definir el Color de Fondo y Tamano de letra de la Pagina */
+body { background-color: #FFFFFF;}
+
+/* Definir Tipo de Letra para una gran mayoria de Tags */ 
+
+h1, h2, h3, h4, h5, h6, body, a, p, ul, ol, td, th, blockquote, cite, textarea, input, select, form { 
+	font-family: verdana, arial, helvetica, sans-serif 
+}
+/* Definir tipos de letras para tags especiales */ 
+pre, code { font-family: monospace }
+
+/* Definir Sangria para cada salto de parrafo */ 
+p {text-indent: 3em } 
+p.sinsangria {text-indent: 0em}
+
+/* Definir tamano de letra para Titulos */ 
+
+h1 { font-size: 18pt }
+h2 { font-size: 14pt }
+h3 { font-size: 14pt }
+h4 { font-size: 12pt }
+h5 { font-size: 10pt }
+h6 { font-size:  8pt }
+
+/* Definir el tipo de Incisos "Bullets" para Lista enumerdas */ 
+
+ol ol li 		{list-style: lower-latin }
+ol ol ol li 	{list-style:	upper-alpha}
+ol ol ol ol li 	{list-style:	lower-alpha}
+ol ol ol ol ol li 	{list-style:	lower-roman}
+
+/* Definir el tipo de Incisos "Bullets" para Listas sin secuencia */ 
+
+ul ul li 		{list-style:  circle}
+ul ul ul li 	{list-style:	circle}
+ul ul ul ul li 	{list-style:	circle}
+ul ul ul ul ul li 	{list-style:	circle}
+
+/* Definir Clases genericas para cualquier tag: se definene con <p class=nav> */
+.enfasis  {
+	font-weight: bold;
+ 	font-size: 10pt;
+ 	font-family: verdana, arial, helvetica, sans-serif; 
+ 	color: black
+}
+.centrar  { text-align: center }
+
+.nodisponible {color: #555555} 
+
+.fondogris { background-color: #DDDDDD } 
+.fondonegro { background-color: #000000 } 
+
+
+.letraroja { color: #C54646 } 
+.letrablanca { color: #FFFFFF } 
+
+/* Definir clase para Tag SELECT Menus smalltextform */ 
+.textoforma1 {
+	font-family: arial,helvetica, sans-serif; 
+	font-size: 6pt
+}
+/* selectlistsmall */ 
+.textoforma2 {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 9pt; 
+}
+
+
+
