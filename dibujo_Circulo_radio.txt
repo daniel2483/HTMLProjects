@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<title>Google Maps</title>
+
+<style>
+.textDiv {
+	font: normal 12px verdana;
+	width: 200px;
+	padding: 3px;
+	margin: 5px;
+	border: 1px solid gray;
+}
+#mapDiv {
+	width: 800px;
+	height: 600px;
+}
+</style>
+
+<script src="/key.js"></script>
+<script>
+	var scriptTag = '<' + 'script src="http://maps.google.com/maps?file=api&v=2.115&hl=en&key=' + myKey + '">'+'<'+'/script>';
+	document.write(scriptTag);
+</script>
+
+<script src="/MStatusControl.js"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var map;
+var container;
+var opacity = 0.4;
+var circle;
+var centerMarker;
+var circleUnits;
+var circleRadius;
+var zoom = 2;
+var centerPoint = new GLatLng(40,-100);
+
+function load() {
+	doLoad();
+}
+
+
+function doLoad() {
+	if (GBrowserIsCompatible()) {
+		container = document.getElementById("mapDiv");
+		map = new GMap2(container, {draggableCursor:"crosshair"});
+		map.setCenter(centerPoint, zoom);
+
+		map.addControl(new GScaleControl());
+		map.addControl(new GLargeMapControl());
+		map.addControl(new GMapTypeControl());
+
+//		map.enableContinuousZoom();
+		map.enableScrollWheelZoom();		
+
+		var pos = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(0, 620));
+		map.addControl(new MStatusControl({position:pos}));
+
+	}
+}
+
+
+function drawCircle() {
+	var oUnitsMI = document.getElementById('unitsMI');
+	var oUnitsKM = document.getElementById('unitsKM');
+	var oRadius = document.getElementById('radiusInput');
+	oRadius.value = oRadius.value ? oRadius.value : 500;
+	
+	if (oRadius.value.match(/[^\d.]/)) {
+		alert("Don't be silly. Enter a number for radius");
+		return;
+	}
+	if (oRadius.value > 9999) {
+	}
+
+	circleRadius = oRadius.value;
+
+	if (oUnitsKM.checked) {
+		circleUnits = 'KM';
+	}
+	else {
+		circleUnits = 'MI';
+	}
+
+	doDrawCircle();
+}
+
+
+function doDrawCircle(){
+
+	if (circle) {
+		map.removeOverlay(circle);
+	}
+
+
+	if (centerMarker) {
+		map.setCenter(centerMarker.getLatLng())
+	}
+	else {
+		centerMarker = new GMarker(map.getCenter(),{draggable:true});
+		GEvent.addListener(centerMarker,'dragend',drawCircle)
+		map.addOverlay(centerMarker);
+	}
+
+	var center = map.getCenter();
+
+	var bounds = new GLatLngBounds();
+
+	
+	var circlePoints = Array();
+
+	with (Math) {
+		if (circleUnits == 'KM') {
+			var d = circleRadius/6378.8;	// radians
+		}
+		else { //miles
+			var d = circleRadius/3963.189;	// radians
+		}
+
+		var lat1 = (PI/180)* center.lat(); // radians
+		var lng1 = (PI/180)* center.lng(); // radians
+
+		for (var a = 0 ; a < 361 ; a++ ) {
+			var tc = (PI/180)*a;
+			var y = asin(sin(lat1)*cos(d)+cos(lat1)*sin(d)*cos(tc));
+			var dlng = atan2(sin(tc)*sin(d)*cos(lat1),cos(d)-sin(lat1)*sin(y));
+			var x = ((lng1-dlng+PI) % (2*PI)) - PI ; // MOD function
+			var point = new GLatLng(parseFloat(y*(180/PI)),parseFloat(x*(180/PI)));
+			circlePoints.push(point);
+			bounds.extend(point);
+		}
+
+		if (d < 1.5678565720686044) {
+			circle = new GPolygon(circlePoints, '#000000', 2, 1, '#000000', 0.25);	
+		}
+		else {
+			circle = new GPolygon(circlePoints, '#000000', 2, 1);	
+		}
+		map.addOverlay(circle); 
+
+		map.setZoom(map.getBoundsZoomLevel(bounds));
+	}
+}
+
+
+
+
+//]]>
+</script>
+</head>
+
+
+
+
+
+<body>
+
+
+<a href="/">Home (More maps)</a><br>
+<a href="/mailme/index.php">Send me a message</a>
+<hr style="height:1px;">
+
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<td valign="top">
+			<div id="mapDiv"></div>
+		</td>
+		<td valign="top">
+			<div class="textDiv">
+				The circle drawn here is a circle on the surface of the Earth. The larger the radius the more visible the effect of the map projection. (try 2000 miles)
+				<br><br><br>
+				Radius: <input name="radiusInput" id="radiusInput" size="10" ><br>
+				<input type="radio" name="units" id="unitsMI" checked value="MI">Miles<br>
+				<input type="radio" name="units" id="unitsKM" value="KM">Kilometers<br><br>
+				<input type="submit" value="Draw" onclick="drawCircle()">
+			</div>
+			<br>
+			<div class="textDiv">
+			Thanks to joe_ &lt;joe_@mailbag.com&gt; for adding sense to my math :-)
+			</div>
+		
+		
+		</td>
+	</tr>
+</table>
+
+
+<img src="/images/rect.png" style="display:none">
+
+<script>
+	window.onload = load;
+	window.onunload = GUnload;
+	window.onresize = resizeMap;
+</script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1221628-1";
+urchinTracker();
+</script>
+
+</body>
+</html>

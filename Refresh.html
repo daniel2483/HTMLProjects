@@ -1,0 +1,41 @@
+<!-- Codes by Quackit.com -->
+<html>
+	<head>
+		<script type="text/JavaScript">
+
+		document.write("<center><TT><b>Fecha actual: </b>");
+		var fecha = new Date();
+
+		var diaSemana = new Array('Domingo', 'Lunes', 'Martes','Miércoles', 'Jueves', 'Viernes','Sábado');
+		var dia = fecha.getDay();
+
+		var nombremes = new Array('Enero', 'Febrero', 'Marzo','Abril', 'Mayo', 'Junio','Julio','Agosto', 'Septiembre', 'Octubre','Noviembre', 'Diciembre');
+		var mes = fecha.getMonth();
+
+		
+		//var mes = new getMonth();
+		//var ho1ra = new getHours();
+		//var agno = new getYear();
+		//var minutos= new getMinutes();
+		document.write('Hoy es '+diaSemana[dia]);
+		document.write(' '+fecha.getDate() );
+		document.write(' de '+nombremes[mes]);
+		document.write(' de '+fecha.getFullYear(),', '+fecha.getHours(),':'+fecha.getMinutes(),':'+fecha.getSeconds(),'</TT></center>');
+
+			<!--
+		function timedRefresh(timeoutPeriod) {
+			setTimeout("location.reload(true);",timeoutPeriod);
+		}
+			//   -->	
+
+		</script>
+	
+	</head>	
+
+
+
+<body onload="JavaScript:timedRefresh(1000);">
+
+</body>
+
+</html>

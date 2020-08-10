@@ -1,0 +1,10 @@
+
+
+var polyline = new GPolyline([
+  new GLatLng(39.144972, -84.476623),
+  new GLatLng(41.498806, -81.707382),
+  new GLatLng(39.766325, -86.187744),
+  new GLatLng(39.144972, -84.476623)
+], "#000000", 3);
+
+map.addOverlay(polyline);
