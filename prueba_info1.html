@@ -1,0 +1,102 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Radio Bases de Costa Rica</title>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA"type="text/javascript"></script>
+
+<center><div style="color:#0B243B"><h1>Radio Bases de Costa Rica Ericsson</h1></div><center>
+
+<center><div id="map" style="width: 930px;height: 595px;">
+</div><center>
+
+<div id="mensaje" style="display:none;">Test text.</div>
+
+
+<script src="jquery-1.4.2.min.js type="text/javascript"></script>
+
+
+
+<script type="text/javascript charset="utf-8">
+
+// Objeto XMLHttp  (AJAX)
+
+ 
+function load(){
+  if (GBrowserIsCompatible()) 	{
+
+	var markerUrl = "file:///C:/Documents%20and%20Settings/Ericsson%20de%20Costa%20Ri/Desktop/Avances%20Daniel/info_test.html";
+	var markerCluster;
+	 
+	// Costa Rica
+	map = new GMap2(document.getElementById("map"));
+	map.setCenter(new GLatLng(9.60,-84.00), 8);
+	map.setUIToDefault();
+	 
+	// get the marker data
+	GDownloadUrl(markerUrl, function(data) {
+	 
+	// get an icon - in keeping with style
+	var newIcon = MapIconMaker.createMarkerIcon({width: 32, height: 32, primaryColor: "#FFBC3F"});
+	
+	// store the created placemarks
+	var markers = [];
+	
+	// get the xml data
+	var xml = GXml.parse(data);
+	
+	// extract the markers from the xml
+	var points = xml.documentElement.getElementsByTagName("marker");
+	
+	// build a group of markers
+	for (var i = 0; i < points.length; i++) {
+	 
+	// get the coordinates
+	var latlng = new GLatLng(parseFloat(points[i].getAttribute("lat")), parseFloat(points[i].getAttribute("lng")));
+	 
+	// create the marker
+	var marker = new GMarker(latlng, {icon: newIcon});
+	 
+	// build the url for the info
+	var url = "file:///C:/Documents%20and%20Settings/Ericsson%20de%20Costa%20Ri/Desktop/Avances%20Daniel/info_test.html" + points[i].getAttribute("id");
+	 
+	// get a function to respond to the click
+	var fn = markerClick(url, latlng);
+	 
+	// add an event listener to listen for the click on a marker
+	GEvent.addListener(marker, "click", fn);
+	 
+	// add the marker to the list
+	markers.push(marker);
+	}
+	 
+	// add the markers to the map
+	markerCluster = new MarkerClusterer(map, markers);
+	});	
+
+
+// function to build a function to respond to the click on a marker
+	function markerClick(url, latlng) {
+	return function() {
+	// download the event information
+	    GDownloadUrl(url, function(html) {
+	      // open an info window with the information
+	      map.openInfoWindowHtml(latlng, html, {maxWidth:450, maxHeight:400, autoScroll:true});
+	    });
+	  }
+	}
+
+}		
+		
+</script>
+	
+	<style media="screen" type="text/css">
+		#mensaje { position:absolute; padding:10px; background:#555; color:#fff; width:75px; } 
+	</style>
+
+</head>
+<body onload="load();" onunload="GUnload();">
+
+
+</body>
+</html>

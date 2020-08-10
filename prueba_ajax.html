@@ -1,0 +1,75 @@
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Radio Bases de Costa Rica</title>
+	<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA"
+
+	type="text/javascript"></script>
+
+
+	<script language="javascript" type="text/javascript">
+
+
+	//funcion encargada de crear el objeto
+	
+	function XMLHttp()
+		{
+		var Object;
+
+		if (typeof XMLHttpRequest == “undefined” )
+		{
+			if(navigator.userAgent.indexOf(”MSIE 5?) >= 0)
+			{ Object= new ActiveXObject(”Microsoft.XMLHTTP”);}
+			else
+			{ Object=new ActiveXObject(”Msxml2.XMLHTTP”);}
+		}
+
+		else { Object=new XMLHttpRequest();}
+
+		return Object;
+			
+		}
+
+
+//
+
+//Esta funcion es la que llamamos en el evento ONCLICK de nuestro boton
+
+	function primer_tope()	
+			{
+	//creamos el objeto
+	_objetus=XMLHttp();
+
+	//cargamos una variable con las variables que vamos a enviar
+	_values_send="funcion=pt"
+	_URL_="procesador.php?"
+	_objetus.open("GET",_URL_+"&"+_values_send,true);
+
+	//una vez enviado los valores inmediatamente llamamos a la propiedad
+	//onreadystatechange	
+	_objetus.onreadystatechange=function() 	{
+
+	//dentro de la funcion comprobamos el estado del proceso
+	//si es 4 (terminado) pedimos lo que nos han mandado
+		if (_objetus.readyState==4)
+			{
+		//usamos la propiedad responseText para recibir en una cadena
+		//lo que nos mandaron
+		window.alert(_objetus.responseText);
+			}
+						}
+	//obligatorio .... luego explicarè el porque
+	_objetus.send(null);
+			}
+</script>
+
+	</head>
+	
+		<body onload="load();" onunload="GUnload();">
+	
+
+		<input type="button" value="Pedir datos" onclick="primer_tope();">			
+
+
+		</body>
+	</html>
