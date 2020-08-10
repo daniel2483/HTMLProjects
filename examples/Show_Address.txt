@@ -1,0 +1,80 @@
+<html> 
+<head> 
+
+    <title>Google Maps API Example - Geocoding API</title> 
+    <script src='http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAA6TLQxK6Rh5cFE32G3X22khRrTTcFZUncHndZ2WxatLIP5EnmDxRTWn37guRGA5NHrsCHbAsc57XgfA' type='text/javascript'></script> 
+    <script type='text/javascript'> 
+    //<![CDATA[ 
+
+    var map = null; 
+    var geocoder = null; 
+
+    function load() { 
+      if (GBrowserIsCompatible()) { 
+        map = new GMap2(document.getElementById('map')); 
+        map.addControl(new GSmallMapControl()); 
+        map.addControl(new GMapTypeControl()); 
+        map.setCenter(new GLatLng(37.4419, -122.1419), 15); 
+        geocoder = new GClientGeocoder(); 
+      } 
+    } 
+
+    function showAddress(address) { 
+      if (geocoder) { 
+        geocoder.getLatLng( 
+          address, 
+          function(point) { 
+            if (!point) { 
+              alert(address + 'not found'); 
+            } else { 
+              map.setCenter(point, 15); 
+              var marker = new GMarker(point); 
+              map.addOverlay(marker); 
+              marker.openInfoWindowHtml(address); 
+            } 
+          } 
+        ); 
+      } 
+    } 
+    //]]> 
+    </script> 
+
+<script> 
+function Mapa(ID, icon){ 
+    if(document.getElementById(ID).style.display == 'none'){ 
+        document.getElementById(ID).style.display = ''; 
+        document.images[icon].src = 'cerrar.gif'; 
+     } 
+    else{document.getElementById(ID).style.display = 'none' 
+                document.images[icon].src = 'abrir.gif'; 
+     } 
+} 
+</script> 
+
+</head> 
+
+
+  <body onload='load()' onunload='GUnload()'> 
+
+   <a href="javascript:Mapa('LOC', 'ViewLOC')";><IMG SRC='cerrar.gif' border='0' name='ViewLOC'></a> 
+
+    
+    
+   <div id='LOC' style='display:;'> 
+    <form action='#' onsubmit='showAddress(this.address.value); return false'> 
+      <p> 
+        <input type='text' size='60' name='address' value='Ciscar 44, valencia, España' /> 
+        <input type='submit' value='Go!' /> 
+      </p> 
+      <div id='map' style='width: 458px; height: 260px'></div> 
+    </form> 
+   </div> 
+    
+
+
+</body> 
+
+<html> 
+<head> 
+
+</html>  

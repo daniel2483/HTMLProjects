@@ -1,0 +1,7 @@
+http://www.w3schools.com/js/js_switch.asp   Switch
+
+http://www.w3schools.com/js/js_popup.asp    Pop up boxes
+
+http://www.w3schools.com/js/js_events.asp   Eventos
+
+http://www.w3schools.com/js/js_objects.asp  assignar valores a objetos

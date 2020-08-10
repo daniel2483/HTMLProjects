@@ -1,0 +1,32 @@
+function drawCircle(lat, lng, radius, stroke, sColor) {
+ 
+  // Degrees to radians 
+  var d2r = Math.PI / 180;
+  // Radians to degrees
+ var r2d = 180 / Math.PI;
+  // Earth radius is 3,963 miles
+ var cLat = (radius / 3963) * r2d;
+  var cLng = cLat / Math.cos(lat * d2r);
+ 
+  // Store points in array 
+  var points = [];
+ 
+  // Calculate the points
+  // Work around 360 points on circle
+  for (var i=0; i < 360; i++) {
+ 
+    var theta = Math.PI * (i/16);
+ 
+    // Calculate next X point 
+    circleX = lng + (cLng * Math.cos(theta));            
+    // Calculate next Y point 
+    circleY = lat + (cLat * Math.sin(theta));
+    // Add point to array 
+    points.push(new GPoint(circleX, circleY));
+ 
+  };
+ 
+  // Add points to map 
+  map.addOverlay(new GPolyline(points, sColor, stroke));
+ 
+}
