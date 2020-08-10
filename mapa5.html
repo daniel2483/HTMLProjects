@@ -1,0 +1,150 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Radio Bases de Costa Rica</title>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA"
+      type="text/javascript"></script>
+
+<center><h1>Radio Bases de Costa Rica Ericsson</h1><center>
+
+<center><div id="map" style="width: 930px;height: 595px;">
+</div><center>
+
+<script type="text/javascript">
+
+	function clock() {	
+		
+  		document.write("<center><TT><b>Fecha actual: </b>");
+  		var fecha = new Date();
+		var diaSemana = new Array('Domingo', 'Lunes', 'Martes','Miércoles', 'Jueves', 'Viernes','Sábado');
+  		var dia = fecha.getDay();
+ 		var nombremes = new Array('Enero', 'Febrero', 'Marzo','Abril', 'Mayo', 'Junio','Julio','Agosto', 		'Septiembre', 	'Octubre','Noviembre', 'Diciembre');
+  		var mes = fecha.getMonth();
+
+  
+		document.write('Hoy es '+diaSemana[dia]);
+		document.write(' '+fecha.getDate() );
+  		document.write(' de '+nombremes[mes]);
+  		document.write(' de '+fecha.getFullYear(),', 				'+fecha.getHours(),':'+fecha.getMinutes(),':'+fecha.getSeconds(),'</TT></center>');
+
+			
+			}
+<!--
+	function reloj() {
+
+		var fObj = new Date() ; 
+		var horas = fObj.getHours() ; 
+		var minutos = fObj.getMinutes() ; 
+		var segundos = fObj.getSeconds() ; 
+		if (horas <= 9) horas = "0" + horas; 
+		if (minutos <= 9) minutos = "0" + minutos; 
+		if (segundos <= 9) segundos = "0" + segundos; 
+		window.status = horas+":"+minutos+":"+segundos;
+			
+			}
+//   --> 
+
+	  	var id = setInterval("reloj()",1000);
+
+		setTimeout("clearInterval("+id+")",15000);
+
+<!--
+
+	function timedRefresh(timeoutPeriod) 	{
+   		setTimeout("location.reload(true);",timeoutPeriod);
+ 						}
+//   -->
+
+ 
+function load(){
+  if (GBrowserIsCompatible()) {
+	var map = new GMap2(document.getElementById("map"));
+
+	var costarica = new GLatLng(9.60,-84.00);
+	map.setCenter(costarica,8);               //centrado en costa rica	
+	//map.setMapType(G_HYBRID_TYPE);            //tipo de mapa (Satelital, de mapa o hibrido)
+	
+	map.addControl(new GSmallMapControl());   //Controles
+	map.addControl(new GMapTypeControl());
+	
+	// Crear nuestro "Servicio" marcador icono
+	var BaseIcon = new GIcon(); 
+	BaseIcon.image = 	"http://chart.apis.google.com/chart?chst=d_bubble_icon_text_small&chld=mobile|bbT|R|BBBBBB|000000";
+	BaseIcon.shadow = 	"http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+	BaseIcon.iconSize = new GSize(18,19); 
+	BaseIcon.shadowSize = new GSize(22, 20); 
+	BaseIcon.iconAnchor = new GPoint(10, 25); 
+	BaseIcon.infoWindowAnchor = new GPoint(5, 1); 
+
+	// Configurar nuestra GMarkerOptions literal de objeto
+	markerOptions = { icon:BaseIcon }; 
+
+
+
+	var number=0.1;	
+	var cont=0;	
+
+	var Lat=9.65;
+	var Lon=-83.50;
+	
+	var i=0;
+	for (i=0;i<5;i++)
+		{
+
+			var CELDA= new GLatLng(Lat,Lon);
+			var marker = new GMarker(CELDA);
+			map.addOverlay(new GMarker(CELDA, markerOptions)); 
+
+			Lat=Lat-2*number;
+			Lon=Lon+i*number;
+		
+		}
+	
+
+
+   function Centrar(botonc)
+   {
+	
+      	if (botonc.value=="Centrar")	{
+
+	var costarica = new GLatLng(9.60,-84.00);
+	map.setCenter(costarica,8);
+
+					}
+   }
+
+   function Mostrar(boton)
+   {
+      msg+="Indicador 1:"+formulario.check1.checked+"\n"
+      msg+="Indicador 2:"+formulario.check2.checked+"\n"
+      msg+="Indicador 3:"+formulario.check3.checked+"\n"
+      msg+="Indicador 4:"+formulario.check4.checked+"\n"
+      msg+="Indicador 5:"+formulario.check5.checked+"\n"
+      msg+="Indicador 6:"+formulario.check6.checked+"\n"
+      alert(msg);
+   } 
+
+
+  }
+}
+
+</script>
+</head>
+
+<body onload="load();">
+
+<br><form action="procesa.phtml" name="formulario" id="formulario" method="GET">
+<input type="button" name="Centrar" value="Centrar Mapa" OnClick="Centrar(this)"<br><br>
+<input type="checkbox" name="Indicador 1" checked> Trafico
+<input type="checkbox" name="Indicador 2" checked> Congestion<br>
+<input type="checkbox" name="Indicador 3" checked> Opcion 3 
+<input type="checkbox" name="Indicador 4" checked> Opcion 4<br>
+<input type="checkbox" name="Indicador 5" checked> Opcion 5
+<input type="checkbox" name="Indicador 6" checked> Opcion 6<br> 
+</form> 
+
+
+
+</body>
+</html>

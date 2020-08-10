@@ -1,0 +1,153 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Radio Bases de Costa Rica</title>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA"type="text/javascript"></script>
+
+<center><div style="color:#0B243B"><h1>Radio Bases de Costa Rica Ericsson</h1></div><center>
+
+<center><div id="map" style="width: 930px;height: 595px;">
+</div><center>
+
+<div id="mensaje" style="display:none;">Test text.</div>
+
+
+<script src="jquery-1.4.2.min.js type="text/javascript"></script>
+
+
+
+<script type="text/javascript charset="utf-8">
+
+// Objeto XMLHttp  (AJAX)
+
+
+
+ 
+function load(){
+  if (GBrowserIsCompatible()) 	{
+
+
+	var map = new GMap2(document.getElementById("map"));
+
+	var costarica = new GLatLng(9.60,-84.00);
+	var zoom=8;
+	map.setCenter(costarica,zoom);               //centrado en costa rica	
+
+	//map.setMapType(G_HYBRID_TYPE);            //tipo de mapa (Satelital, de mapa o hibrido)
+	//map.disablePinchToZoom();
+
+	map.addControl(new GSmallMapControl());   //Controles
+	map.addControl(new GMapTypeControl());
+	//var limites=0;	
+	//map.getBounds(limites);
+	map.savePosition();
+	
+	//map.enableScrollWheelZoom();
+	
+	// Crear nuestro marcador icono#######################################################
+	var BaseIcon = new GIcon(); 
+	BaseIcon.image = 	"http://chart.apis.google.com/chart?chst=d_bubble_icon_text_small&chld=mobile|bbT|R|BBBBBB|000000";
+	BaseIcon.shadow = "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+	BaseIcon.iconSize = new GSize(18,19); 
+	BaseIcon.shadowSize = new GSize(22, 20); 
+	BaseIcon.iconAnchor = new GPoint(10, 25); 
+	BaseIcon.infoWindowAnchor = new GPoint(1, 1); 
+	
+	// Configurar nuestra GMarkerOptions literal de objeto
+	markerOptions = { icon:BaseIcon }; 	
+		
+
+    	function createMarker(point,message) 	{
+
+        	var marker = new GMarker(point, markerOptions);
+		GEvent.addListener(marker, "click", function() {
+        	marker.openInfoWindowHtml(message);
+	        });
+        	return marker;
+				     		}
+	//GLatLngBounds(sw?: GLatLng , ne?: GLatLng )
+	//getSouthWest()
+	//
+
+	var number=0.1;
+	var cont=0;	
+	var Lat=9.65;
+	var Lon=-83.50;
+	var i=0;
+	var markers = [];
+	
+	for (i=0;i<5;i++)
+		{
+		var point= new GLatLng(Lat,Lon);
+ 		var marker = createMarker(point,'<b>Ubicacion</b><br>Latitud: '+Lat+'<br>Longitud:'+Lon);
+		map.addOverlay(marker); 	//new GMarker(point, markerOptions);
+		markers[i] = marker;		
+	
+		Lat=Lat-2*number;
+		Lon=Lon+i*number;
+	
+		}
+	
+	//$(markers).each(function(i,marker)	{
+	//			.click(function(){displayPoint(marker, i);})	
+	//			GEvent.addListener(marker, "click", function(){displayPoint(marker, i)});
+	//					});
+	//	$("#mensaje").appendTo(map.getPane(G_MAP_FLOAT_SHADOW_PANE));
+		
+			
+		
+		//function displayPoint(marker, i){
+			//map.panTo(marker.getPoint());       
+			//var markerOffset = map.fromLatLngToDivPixel(marker.getPoint());
+			//$("#mensaje").show().css({ top:markerOffset.y, left:markerOffset.x });
+	//					}
+		
+		
+		
+		function Centrar(boton_center)
+   			{
+				map.returnToSavedPosition();
+  			}
+		
+			
+				}
+		
+<!-- 
+		function Mostrar(boton)
+  		 {
+			msg+="Indicador 1:"+formulario.check1.checked+"\n"
+	      		msg+="Indicador 2:"+formulario.check2.checked+"\n"
+	      		msg+="Indicador 3:"+formulario.check3.checked+"\n"
+	      		msg+="Indicador 4:"+formulario.check4.checked+"\n"
+	      		msg+="Indicador 5:"+formulario.check5.checked+"\n"
+	      		msg+="Indicador 6:"+formulario.check6.checked+"\n"
+	      		alert(msg);
+  		} 
+//-->		
+		
+}		
+		
+</script>
+	
+	<style media="screen" type="text/css">
+		#mensaje { position:absolute; padding:10px; background:#555; color:#fff; width:75px; } 
+	</style>
+
+</head>
+<body onload="load();" onunload="GUnload();">
+
+<br><form action="procesa.phtml" name="formulario" id="formulario" method="GET">
+<input type="button" name="Centrar" value="Centrar Mapa" OnClick="Centrar(this);"><br><br>
+<input type="checkbox" name="Indicador 1" checked> Trafico
+<input type="checkbox" name="Indicador 2" checked> Congestion<br>
+<input type="checkbox" name="Indicador 3" checked> Opcion 3 
+<input type="checkbox" name="Indicador 4" checked> Opcion 4<br>
+<input type="checkbox" name="Indicador 5" checked> Opcion 5
+<input type="checkbox" name="Indicador 6" checked> Opcion 6<br> 
+</form> 
+
+<A href="javascript:Centrar()">mensaje</A>
+
+</body>
+</html>

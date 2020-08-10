@@ -1,0 +1,67 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Radio Bases de Costa Rica</title>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA"
+      type="text/javascript"></script>
+
+<center><h1>Radio Bases de Costa Rica Ericsson</h1><center>
+
+<center><div id="map" style="width: 930px;height: 595px;">
+</div><center>
+
+<script type="text/javascript">
+
+function load(){
+  if (GBrowserIsCompatible()) {
+	var map = new GMap2(document.getElementById("map"));
+
+	var costarica = new GLatLng(9.60,-84.00);
+	map.setCenter(costarica,8);               //centrado en costa rica	
+	//map.setMapType(G_HYBRID_TYPE);            //tipo de mapa (Satelital, de mapa o hibrido)
+	
+	map.addControl(new GSmallMapControl());   //Controles
+	map.addControl(new GMapTypeControl());
+	
+	var CELDA1= new GLatLng(9.65,-83.50);
+	var marker = new GMarker(CELDA1);
+	map.addOverlay(marker);
+	//map.savePosition();
+
+   function Centrar(boton_center)
+   {
+      	map.setCenter(costarica,8);
+   }
+
+   function Mostrar(boton)
+   {
+      msg="Indicador 1:"+formulario.check1.checked+"\n"
+      msg+="Indicador 2:"+formulario.check2.checked+"\n"
+      msg+="Indicador 3:"+formulario.check3.checked+"\n"
+      msg+="Indicador 4:"+formulario.check4.checked+"\n"
+      msg+="Indicador 5:"+formulario.check5.checked+"\n"
+      msg+="Indicador 6:"+formulario.check6.checked+"\n"
+      alert(msg);
+   } 
+
+  }
+}
+
+</script>
+</head>
+<body onload="load();" onunload="GUnload();">
+
+<br><form action="procesa.phtml" name="formulario" id="formulario" method="GET">
+<input type="button" name="Centrar" value="Centrar Mapa" OnClick="Centrar(this);"><br>
+<input type="checkbox" name="Indicador 1" checked> Trafico
+<input type="checkbox" name="Indicador 2" checked> Congestion<br>
+<input type="checkbox" name="Indicador 3" checked> Opcion 3 
+<input type="checkbox" name="Indicador 4" checked> Opcion 4<br>
+<input type="checkbox" name="Indicador 5" checked> Opcion 5
+<input type="checkbox" name="Indicador 6" checked> Opcion 6<br> 
+</form> 
+
+
+</body>
+</html>
