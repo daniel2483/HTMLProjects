@@ -1,0 +1,93 @@
+#!/usr/bin/perl
+
+use CGI;
+
+$query=new CGI;
+
+print "Content-type: text/html\n\n";
+
+#datos del registro
+
+$v_nombre= $query->param('NOMBRE');
+
+$v_ciudad= $query->param('CIUDAD');
+
+$v_pais= $query->param('PAIS');
+
+$v_correo= $query->param('EMAIL');
+
+$v_asunto= $query->param('SUBJECT');
+
+$v_mensaje= $query->param('MENSAJE');
+
+#manda los datos de la forma via e-mail a la persona responsable.
+
+open (CORREO, "|mail luz\@simba.dgsca.unam.mx");
+
+print CORREO "\n\nReporte: TU OPINION NOS INTERESA \n";
+
+print CORREO "\n Nombre: $v_nombre";
+
+print CORREO "\n Ciudad: $v_ciudad";
+
+print CORREO "\n Pais: $v_pais";
+
+$v_correo= $query->param('EMAIL');
+
+$v_asunto= $query->param('SUBJECT');
+
+$v_mensaje= $query->param('MENSAJE');
+
+#manda los datos de la forma via e-mail a la persona responsable.
+
+open (CORREO, "|mail luz\@simba.dgsca.unam.mx");
+
+print CORREO "\n\nReporte: TU OPINION NOS INTERESA \n";
+
+print CORREO "\n Nombre: $v_nombre";
+
+print CORREO "\n Ciudad: $v_ciudad";
+
+print CORREO "\n Pais: $v_pais";
+
+print CORREO "\n e-mail: $v_correo";
+
+print CORREO "\n Asunto: $v_asunto";
+
+print CORREO "\n Mensaje: $v_mensaje";
+
+close (CORREO);
+
+print "<html>";
+
+print "<head>";
+
+print "<title>Gracias por su inter&eacute;s";
+
+print "</title>";
+
+print "</head>";
+
+print "<body bgcolor=\"#FFFFFF\">";
+
+print "<h1>Gracias por su inter\&eacute\;s</h1>";
+
+print "<hr>";
+
+print "<br><br><center>";
+
+print "Sus datos han sido enviados al administrador de estas
+
+p\&aacute;ginas<br>";
+
+print "<p>";
+
+print "<h3>Regresar a la <a ";
+
+print "href=\"http://e5000.dcaa.unam.mx:5050/formas/opinion.htm\">";
+
+print "P\&aacute\;gina Principal</a>";
+
+print "</h3></center></body>";
+
+print "</html>"; 
