@@ -1,0 +1,18 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>Simple Calculator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h1>Simple Calculator</h1><hr /><form method="post" action="/~ryanlane/cgi-bin/calc.cgi" enctype="multipart/form-data">
+<p>Enter first value:  <input type="text" name="value1"  /></p><p>Pick operation:  <select name="operation" >
+<option value="+">+</option>
+<option value="-">-</option>
+<option value="*">*</option>
+<option value="/">/</option>
+</select></p><p>Enter second value:  <input type="text" name="value2"  /></p><p><input type="submit" name="Calculate" value="Calculate" /> <input type="reset"  name="Clear" value="Clear" /></p></form><hr />
+</body>
+</html>

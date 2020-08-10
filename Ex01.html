@@ -1,0 +1,41 @@
+
+  <html>
+
+  <head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>ExtInfoWindow Example: Simple Example</title>
+
+  <link type="text/css" rel="Stylesheet" media="screen" href="css/simpleExampleWindow.css"/>
+
+  <script type="text/javascript" 
+  src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA">
+  </script>
+  <script src="../src/extinfowindow.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  var map;
+  function load() {
+    if (GBrowserIsCompatible()) {
+      map = new GMap2(document.getElementById("map"));
+  	  map.setCenter(new GLatLng(9.6, -84), 8);
+      map.addControl(new GLargeMapControl());
+
+      marker = new GMarker( new GLatLng(9.6, -83) );
+      GEvent.addListener(marker, 'click', function(){ 
+        marker.openExtInfoWindow(
+          map,
+          "simple_example_window",
+          "I'm some HTML content that will go in the simple example's ExtInfoWindow.",
+          {beakOffset: 3}
+        ); 
+      });
+      map.addOverlay(marker);
+    }
+  }
+  </script>
+  </head>
+  <body onload="load()" onunload="GUnload()">
+  <div id="map" style="width: 900px; height: 600px" ></div>
+  </body>
+  </html>
+ 

@@ -1,0 +1,41 @@
+<!-- Manual de JavaScript de WebEstilo.com -->
+<HTML>
+<HEAD>
+	<title>Ejemplo de JavaScript</title>
+</HEAD>
+  <script LANGUAGE="JavaScript">
+ 
+ function contar(objetoSelect){
+        var seleccionadas=0
+	    for (var i=0;i < objetoSelect.options.length;i++){
+	       if (objetoSelect.options[i].selected) 
+		       seleccionadas++;
+	    }
+	    return seleccionadas;
+     }
+
+
+ </script>
+
+<BODY BGCOLOR="#FFFFFF">
+  
+<form name="formulario">
+ <p><b>Selecione los temas que son de su interés
+ y pulse después el botón </b>
+ <br><select name="temas" múltiple>
+   <option selected>Informática
+   <option>Naturaleza
+   <option>Música
+   <option>Deportes
+   <option>Economía
+   <option>Coleccionismo
+  </select>
+  <p>
+  <input type="button" value="¿Cuántos hay selecionados?"
+  onclick="alert('Número de opciones selecionadas: ' + contar(document.formulario.temas))">
+  </form>
+
+
+
+</BODY>
+</HTML>

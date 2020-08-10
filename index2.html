@@ -1,0 +1,257 @@
+<html>
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Indice Ericsson</title>
+
+		<center>
+		<img src="/googlemap/imagenes/logo-ericsson.jpg" align="left" WIDTH=211 HEIGHT=114 BORDER=0 ALT="Autor:http://www.nae.es/blog/wp-content/uploads/2009/07/ericsson-logo.jpg">
+		<br>
+		<h1><b><font face="arial" color="Gray" size=7>Radiobases de Costa Rica</font></b></h1>
+		</center><br>
+
+		<script language="javascript" src="cal2.js"></script>
+		<script language="javascript" src="cal_conf2.js"></script>
+
+	<script language="javascript">
+
+		function habilita(form)
+			{
+			form.firstinput.disabled = false;
+			form.hora.disabled= false;
+			}
+
+		function deshabilita(form)
+			{
+			form.firstinput.disabled= true;
+			form.hora.disabled= true;
+			}
+
+		function limita_teclado (e)
+			{
+			key=(document.all) ? e.keyCode : e.which;
+			if (key != "")
+				{
+				alert("Solo se puede Ingresar Fecha mediante link 'Ingresar Fecha'");
+				return false;
+				}
+			else
+				return true;
+			}
+
+
+		function LP_data(e)
+			{
+			key=(document.all) ? e.keyCode : e.which;
+
+			if (key < 48 || key > 57 )
+				{
+				if (key==8)
+					{
+					return true;
+					}
+
+				else
+					alert("Solo se pueden ingresar numeros");
+					return false;
+				}
+			}
+
+		function deshabilita_valor()
+			{
+     			if (document.sampleform.referencia.value != "0")
+				{
+ 				document.sampleform.valor.disabled = false;
+ 				}
+			else
+				{
+ 				if (document.sampleform.referencia.value == "0")
+					{
+           				document.sampleform.valor.disabled = true;
+ 					}
+				}
+			}
+
+		function revisar_form()
+			{
+			if (	document.sampleform.valor.disabled==true	&&	document.sampleform.firstinput.disabled==true)
+				{
+				return true;
+				}
+
+			else if (	document.sampleform.valor.disabled==false	&&	document.sampleform.firstinput.disabled==false)
+				{
+
+					if(	document.sampleform.valor.value==""	&&	document.sampleform.firstinput.value=="")
+						{
+						alert('Debes ingresar una FECHA y un VALOR.') ;
+						return false ;
+						}
+
+					if(	document.sampleform.valor.value== "")
+						{
+						alert('Debes ingresar un VALOR') ;
+						return false ;
+						}
+
+					if(	document.sampleform.firstinput.value== "")
+						{
+						alert('Debes ingresar una FECHA') ;
+						return false ;
+						}
+					else
+						return true;
+				}
+
+
+			else if (	document.sampleform.valor.disabled==true	&&	document.sampleform.firstinput.disabled==false)
+				{
+
+					if(	document.sampleform.firstinput.value== "")
+						{
+						alert('Debes ingresar una FECHA') ;
+						return false ;
+						}
+					else
+						return true;
+				}
+
+			else if (	document.sampleform.valor.disabled==false	&&	document.sampleform.firstinput.disabled==true)
+				{
+
+					if(	document.sampleform.firstinput.value== "")
+						{
+						alert('Debes ingresar una VALOR') ;
+						return false ;
+						}
+					else
+						return true;
+				}
+
+			}
+
+	</script>
+
+
+
+</head>
+
+<body>
+
+<table style="width: 1000px; height: 108px" class="masthead-background" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td style="background-color: rgb(0, 0, 87)" width="143">
+<big>
+<big>
+<span
+style="color: rgb(204, 204, 204); font-weight: bold">Herramienta <br> Google Map
+</span>
+</big>
+</big>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+
+
+<table style="width: 1000px; height: 54px" class="masthead-background" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr height="24">
+<td style="background-color: rgb(180, 180, 180)" width="143">
+<big>
+<span
+style="color: rgb(0, 0, 87); font-weight: bold">Introducir Valores
+</span>
+</big>
+<br>
+<br>
+
+
+
+		<form name="sampleform" action="http://localhost/cgi-bin/gexample6.pl" method="GET" target="_self" onSubmit="return revisar_form()" style="font-family: arial">
+
+		&nbsp;&nbsp;<input type="radio" name="seleccion" value="1" onClick="deshabilita(this.form)"> Autom&aacute;tico
+		&nbsp;&nbsp;<input type="radio" name="seleccion" value="0" checked onClick="habilita(this.form)"> Manual
+		<br>
+		<br>
+
+		&nbsp;&nbsp;<input type="text" name="firstinput" size=20 onkeypress="return limita_teclado(event)"> <small><a href="javascript:showCal('Calendar1')">Ingresar Fecha</a></small>
+		&nbsp;&nbsp;
+
+		<select name="hora" >
+		<optgroup label="Ma&ntilde;ana">
+		<option value="00">00:00</option>
+		<option value="01">01:00</option>
+		<option value="02">02:00</option>
+		<option value="03">03:00</option>
+		<option value="04">04:00</option>
+		<option value="05">05:00</option>
+		<option value="06">06:00</option>
+		<option value="07">07:00</option>
+		<option value="08">08:00</option>
+		<option value="09">09:00</option>
+		<option value="10">10:00</option>
+		<option value="11">11:00</option>
+		<optgroup label="Tarde">
+		<option value="12">12:00</option>
+		<option value="13">13:00</option>
+		<option value="14">14:00</option>
+		<option value="15">15:00</option>
+		<option value="16">16:00</option>
+		<option value="17">17:00</option>
+		<option value="18">18:00</option>
+		<option value="19">19:00</option>
+		<option value="20">20:00</option>
+		<option value="21">21:00</option>
+		<option value="22">22:00</option>
+		<option value="23">23:00</option>
+		</select>
+		&nbsp;Ingresar Hora
+
+		<br>
+		<br>
+
+		&nbsp;&nbsp;Indicador de Calidad de Red Celular:
+		<select name="indicador">
+		<optgroup label="Tipo de Indicador">
+		<option value="1">Tr&aacute;fico Voz </option>
+		<option value="2">Congesti&oacute;n TCH </option>
+		<option value="3">Congesti&oacute;n SDCCH </option>
+		<option value="4">Llamadas Ca&iacute;das</option>
+		<option value="5">Tr&aacute;fico Datos </option>
+		</select>
+ 		<br>
+		<br>
+		&nbsp;&nbsp;Condicional:
+		<select name="referencia" onChange= "javascript:deshabilita_valor()">
+			<optgroup label="Comparaci&oacute;n">
+			<option value="1">Mayor</option>
+			<option value="2">Menor</option>
+			<option value="3">Igual</option>
+			<option value="0">Todos</option>
+		</select>
+
+		&nbsp;&nbsp;
+		Par&aacute;metro de Comparaci&oacute;n: <input type="text" name="valor" size=2 MAXLENGTH=3 onkeypress="return LP_data(event)">
+		<br>
+		<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" value="Imprimir Google Map" size=10 >
+
+</form>
+
+
+
+</td>
+</tr>
+</tbody>
+
+
+</body>
+</html>
