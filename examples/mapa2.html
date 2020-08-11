@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Radio Bases Costa Rica</title>
+<script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAAAai0v3ME37MRbq-RhoiRJxTSgSMfWYkGHB1cG-jBSH0S6dJ-5xQdDNU3l5hKan3DM_p_ZJ15qsL0oA" type="text/javascript"></script>
+</head>
+<body>
+<center> Mapa Radio Bases de Costa Rica Ericsson</center>
+
+<center><div id="map" style="width: 975px; height: 550px"></div></center>
+<script type="text/javascript">
+
+function load(){
+  if (GBrowserIsCompatible()) {
+    var map = new GMap2(document.getElementById("mapa"));
+    map.setCenter(new GLatLng(47.645962,-122.236633), 10);
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GMapTypeControl());
+
+        //Solo añade el tráfico, no el boton para controlarlo
+        map.addOverlay(new GTrafficOverlay());    
+   
+  }
+}
+</script>
+</body>
+</html> 
