@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  IP: MyString
+  ID_SITES: 1
+  ID_IP_TYPES: MyString
+
+two:
+  IP: MyString
+  ID_SITES: 1
+  ID_IP_TYPES: MyString

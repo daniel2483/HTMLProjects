@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ID_SITES: 1
+  ID_DEPENDENCIA: 1
+
+two:
+  ID_SITES: 1
+  ID_DEPENDENCIA: 1

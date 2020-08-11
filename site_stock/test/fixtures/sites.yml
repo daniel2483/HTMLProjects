@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  COD_SITE: MyString
+  NOM_SITE: MyString
+  ACCESO: MyString
+  COORDENADAS: MyString
+  ID_ISLA: 1
+  DESCRIPCION: MyText
+  ZONA: MyString
+
+two:
+  COD_SITE: MyString
+  NOM_SITE: MyString
+  ACCESO: MyString
+  COORDENADAS: MyString
+  ID_ISLA: 1
+  DESCRIPCION: MyText
+  ZONA: MyString

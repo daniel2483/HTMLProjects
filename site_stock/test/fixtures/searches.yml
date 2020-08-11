@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  CODiGO: MyString
+  NOMBRE: MyString
+  ISLA: MyString
+  MEDIO: 1
+  ISLA: MyString
+  TIPO: 1
+  IP: MyString
+  new: MyString
+  show: MyString
+
+two:
+  CODiGO: MyString
+  NOMBRE: MyString
+  ISLA: MyString
+  MEDIO: 1
+  ISLA: MyString
+  TIPO: 1
+  IP: MyString
+  new: MyString
+  show: MyString
