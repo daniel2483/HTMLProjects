@@ -1,0 +1,21 @@
+<h1>Listing medios</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medios.each do |medio| %>
+  <tr>
+    <td><%= link_to 'Show', medio %></td>
+    <td><%= link_to 'Edit', edit_medio_path(medio) %></td>
+    <td><%= link_to 'Destroy', medio, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medio', new_medio_path %>

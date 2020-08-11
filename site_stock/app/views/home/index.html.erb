@@ -1,0 +1,51 @@
+
+<h1>Sitio en Construccion</h1>
+
+<title>Busqueda</title>
+
+
+<% if user_signed_in? %>
+<div class="recuadro" align="center">
+	<%= form_tag sites_path, :method => :get do %>
+    	<p>
+		Codigo del Sitio:
+		<%= text_field_tag :search_cod_site, params[:search_cod_site] %>
+	</p>
+	<p>
+		Tipo de Sitio:
+		<%= radio_button_tag(:search_cod_site1, "RUR") %>
+		<%= label_tag(:search_cod_site_rur, "RUR") %>
+		<%= radio_button_tag(:search_cod_site2, "MTR")%>
+		<%= label_tag(:search_cod_site_mtr, "MTR") %> 
+		<%= radio_button_tag(:search_cod_site3, "BBR") %>
+                <%= label_tag(:search_cod_site_bbr, "BBR") %>
+		<%= radio_button_tag(:search_cod_site4, "RTP") %>
+                <%= label_tag(:search_cod_site_rpt, "RPT") %>
+ 	</p>
+	 <p>
+                Nombre del Sitio:
+                <%= text_field_tag :search_nom_site, params[:search_nom_site] %>
+        </p>
+
+	<p>
+		Isla:
+	</p>
+
+	<p>
+		Seleccionar Medio:
+		<%= collection_select(:site, :medio_id, Medio.all, :id, :tipo_medio, :include_blank => "--Todos--" ) %>
+		
+	</p>
+
+	<p>
+		Busqueda por IP:	
+		<%= text_field_tag :search_ips, params[:search_ip] %>
+	</p>
+
+		<%= submit_tag "Search", :name => nil %>
+	<% end %>  
+
+<% else %>
+        Usuario no logueado
+</div>
+ <% end %>

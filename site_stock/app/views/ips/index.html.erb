@@ -1,0 +1,27 @@
+<h1>Listing ips</h1>
+
+<table>
+  <tr>
+    <th>Ip</th>
+    <th>Id sites</th>
+    <th>Id ip types</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ips.each do |ip| %>
+  <tr>
+    <td><%= ip.IP %></td>
+    <td><%= ip.ID_SITES %></td>
+    <td><%= ip.ID_IP_TYPES %></td>
+    <td><%= link_to 'Show', ip %></td>
+    <td><%= link_to 'Edit', edit_ip_path(ip) %></td>
+    <td><%= link_to 'Destroy', ip, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ip', new_ip_path %>

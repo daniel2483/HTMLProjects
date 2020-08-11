@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Registro_sitios</title>
+   	<%= stylesheet_link_tag    "application", :media => "all" %>
+    	<%= javascript_include_tag "application" %>
+    	<%= csrf_meta_tags %>
+	<% if user_signed_in? %>
+                Signed in as <%= current_user.email %>. Not you?
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	  <% else %>
+		<%= link_to "sign in", new_user_session_path %>
+  	<% end %>
+
+</head>
+
+<style type="text/css">
+#titulo {
+	font-size: 16px;
+	font-style: oblique;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	background-color: #FFF;
+	word-spacing: normal;
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	background-repeat: no-repeat;
+	border-top-width: medium;
+	border-right-width: medium;
+	border-bottom-width: medium;
+	border-left-width: medium;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#titulo .Titulo {
+	background-color: #FFF;
+	position: absolute;
+	left: auto;
+	top: auto;
+	width: auto;
+	font-size: 14mm;
+	height: auto;
+	right: auto;
+	bottom: auto;
+	clip: rect(auto,auto,auto,auto);
+	font-style: normal;
+	visibility: visible;
+	line-height: normal;
+	color: #FFF;
+	text-transform: uppercase;
+}
+.logged {
+	font-size: 14px;
+	position: absolute;
+	left: 843px;
+	top: 110px;
+	width: 101px;
+	font-style: normal;
+}
+#layout .Titulo div {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16mm;
+	font-style: normal;
+	font-weight: bolder;
+	font-variant: normal;
+	text-transform: uppercase;
+	position: absolute;
+	width: 724px;
+	left: 117px;
+	top: 7px;
+	background-image: url(/assets/fondo3.JPG);
+	background-position: 85% 50%;
+	background-repeat: no-repeat;
+	color: #006;
+}
+#layout #form2 #user {
+	position: absolute;
+	width: auto;
+	left: 882px;
+	top: 136px;
+}
+
+#layout #form3 {
+	position: absolute;
+	width: 89px;
+	left: 884px;
+	top: 215px;
+	background-image: url(/assets/fondo3.JPG);
+	background-repeat: repeat;
+	height: 33px;
+	background-position: 15% 45%;
+}
+#layout #form1 .signin {
+	position: absolute;
+	width: 59px;
+	left: 883px;
+	top: 167px;
+}
+#layout #form2 label {
+	position: absolute;
+	width: auto;
+	left: 841px;
+	top: 139px;
+}
+#layout #form1 .signin label {
+	position: absolute;
+	width: auto;
+	left: -41px;
+	top: 1px;
+}
+</style>
+<script src="/assets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="/assets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#apDiv1 {
+	position:absolute;
+	width:711px;
+	height:25px;
+	z-index:1;
+	left: 28px;
+	top: 99px;
+}
+</style>
+</head>
+
+<div class="Titulo">
+  <div align="center">Registro de sitios</div>
+</div>
+<p><img src="/assets/elogo.png" name="elogo" width="71" height="63" id="elogo" /></p>
+<ul id="MenuBar1" class="MenuBarHorizontal">
+<li><a href="#" class="MenuBarItemSubmenu">Home</a>
+    <ul>
+<li><a href="#">Ingresar</a></li>
+<li><a href="#">Sitios Imp.</a></li>
+<li><a href="#">Descripci&oacute;n</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="MenuBarItemSubmenu">B&uacute;squeda</a>
+    <ul>
+      <li><a href="#">Search</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="MenuBarItemSubmenu">Administrar</a>
+    <ul>
+      <li><a href="#" class="MenuBarItemSubmenu">Crear</a></li>
+        <ul>
+          <li><a href="/sites/new">Crear sitio</a></li>
+          <li><a href="#">Crear medios</a></li>
+          <li><a href="#">Crear Isla</a></li>
+        </ul>
+      <li><a href="#">Borrar</a></li>
+      <li><a href="#">Actualizar</a></li>
+      <li><a href="#">Cargar Lote</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="MenuBarItemSubmenu">Ayuda</a>
+    <ul>
+<li><a href="#">C&oacute;mo usar</a></li>
+<li><a href="#" title="Principal">Versi&oacute;n</a></li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<form id="form1" name="form1" method="post" action="">
+  <p class="signin">
+    <label for="signin">Pass:</label><input name="sigin" type="password" id="sigin" size="10" maxlength="10" />
+  </p>
+</form>
+<form id="form3" name="form3" method="post" action="">
+  <div align="center">
+    <input type="submit" name="signin" id="signin" value="Sign In" />
+  </div>
+</form>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div class="logged">Logueado como:</div>
+<form action="" method="post" name="form2" class="signin" id="form2">
+  <label for="user">User:</label>
+  <input name="user" type="text" id="user" size="10" maxlength="10" />
+</form>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"/assets/SpryAssets/SpryMenuBarDownHover.gif", imgRight:"/assets/SpryAssets/SpryMenuBarRightHover.gif"});
+    </script>
+
+<body>
+
+
+<%= yield %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+</body>
+</html>

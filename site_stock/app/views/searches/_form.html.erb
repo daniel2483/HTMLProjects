@@ -1,0 +1,49 @@
+<%= form_for(@search) do |f| %>
+  <% if @search.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@search.errors.count, "error") %> prohibited this search from being saved:</h2>
+
+      <ul>
+      <% @search.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :CODiGO %><br />
+    <%= f.text_field :CODiGO %>
+  </div>
+  <div class="field">
+    <%= f.label :NOMBRE %><br />
+    <%= f.text_field :NOMBRE %>
+  </div>
+  <div class="field">
+    <%= f.label :ISLA %><br />
+    <%= f.text_field :ISLA %>
+  </div>
+  <div class="field">
+    <%= f.label :MEDIO %><br />
+    <%= f.number_field :MEDIO %>
+  </div>  
+  <div class="field">
+    <%= f.label :TIPO %><br />
+    <%= f.number_field :TIPO %>
+  </div>
+  <div class="field">
+    <%= f.label :IP %><br />
+    <%= f.text_field :IP %>
+  </div>
+  <div class="field">
+    <%= f.label :new %><br />
+    <%= f.text_field :new %>
+  </div>
+  <div class="field">
+    <%= f.label :show %><br />
+    <%= f.text_field :show %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

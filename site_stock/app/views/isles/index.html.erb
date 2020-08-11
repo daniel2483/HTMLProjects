@@ -1,0 +1,23 @@
+<h1>Listing isles</h1>
+
+<table>
+  <tr>
+    <th>Nombre isla</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @isles.each do |isle| %>
+  <tr>
+    <td><%= isle.NOMBRE_ISLA %></td>
+    <td><%= link_to 'Show', isle %></td>
+    <td><%= link_to 'Edit', edit_isle_path(isle) %></td>
+    <td><%= link_to 'Destroy', isle, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Isle', new_isle_path %>

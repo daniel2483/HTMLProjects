@@ -1,0 +1,23 @@
+<h1>Listing ip_types</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ip_types.each do |ip_type| %>
+  <tr>
+    <td><%= ip_type.DESCRIPCION %></td>
+    <td><%= link_to 'Show', ip_type %></td>
+    <td><%= link_to 'Edit', edit_ip_type_path(ip_type) %></td>
+    <td><%= link_to 'Destroy', ip_type, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ip type', new_ip_type_path %>

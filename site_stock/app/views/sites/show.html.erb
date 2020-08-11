@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cod site:</b>
+  <%= @site.COD_SITE %>
+</p>
+
+<p>
+  <b>Nom site:</b>
+  <%= @site.NOM_SITE %>
+</p>
+
+<p>
+  <b>Acceso:</b>
+  <%= @site.ACCESO %>
+</p>
+
+<p>
+  <b>Coordenadas:</b>
+  <%= @site.COORDENADAS %>
+</p>
+
+<p>
+  <b>Id isla:</b>
+  <%= @site.ID_ISLA %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @site.DESCRIPCION %>
+</p>
+
+<p>
+  <b>Zona:</b>
+  <%= @site.ZONA %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>
